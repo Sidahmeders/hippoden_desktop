@@ -1,14 +1,12 @@
+const path = require('path')
 const { app, BrowserWindow } = require('electron')
-
-require('@electron/remote/main').initialize()
 
 function createWindow() {
     const window = new BrowserWindow({
         width: 900,
         height: 600,
         webPreferences: {
-            nodeIntegration: true,
-            enableRemoteModule: true
+            preload: path.join(app.getAppPath(), 'public/preload.js')
         }
     })
 
