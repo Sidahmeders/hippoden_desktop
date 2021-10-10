@@ -1,0 +1,28 @@
+.sidebar-toggle {
+    position: absolute;
+    right: 5%;
+    bottom: 3%;
+    padding: 2px 4px;
+    border-radius: 10px;
+    transition: 0.5s;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @keyframes example {
+        from {
+            transform: translateX(-5px);
+        }
+        to {
+            transform: translateX(5px);
+        }
+    }
+
+    img {
+        animation-name: example;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+}

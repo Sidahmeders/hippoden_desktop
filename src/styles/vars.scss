@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Jost';
+    src: url(../assets/fonts/Jost-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url(../assets/fonts/Montserrat-Regular.ttf) format('truetype');
+}
+
+$primary-color: white;
+$secondary-color: #222;
+$bg-color: #ffffff;
+$focus-color: #c9e5f84d;
+$faint-color: #c3dbeb80;
+$form-width: 26rem;
+$label-color: #0cad55;
+$label-size: 19px;
+$label-border-color: #dadada;
+$btn-color: #0770a0;
+$btn-color-hover: #0e89c2;
+$ease: ease 0.5s;
+
+button {
+    outline: none;
+}

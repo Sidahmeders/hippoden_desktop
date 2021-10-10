@@ -1,0 +1,35 @@
+@import '../../../styles/vars.scss';
+
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    background: $bg-color;
+    z-index: 99;
+
+    &.open {
+        width: 220px;
+    }
+    &.closed {
+        width: 70px;
+        overflow: hidden;
+        .text {
+            display: none;
+        }
+        .logo {
+            display: none;
+        }
+    }
+    .logo {
+        display: block;
+        text-decoration: none;
+        font-family: 'Montserrat', cursive;
+        font-size: 1.7rem;
+        text-align: center;
+        padding-top: 10px;
+        color: #6770bea9;
+
+        span {
+            color: #cbd6e0c0;
+        }
+    }
+}
