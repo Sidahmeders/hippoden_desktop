@@ -1,7 +1,7 @@
 import Layout from './components/Layout/Layout'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import CpuCounter from './components/CpuCount'
+import Dashboard from './pages/dashboard'
 
 function App() {
     return (
@@ -9,7 +9,7 @@ function App() {
             <Router>
                 <Switch>
                     <Layout>
-                        <Route path="/" component={CpuCounter} />
+                        <Route path="/" component={Dashboard} />
                     </Layout>
                 </Switch>
             </Router>
