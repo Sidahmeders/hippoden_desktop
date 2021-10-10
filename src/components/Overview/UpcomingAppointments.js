@@ -1,15 +1,11 @@
 import styled from 'styled-components'
+import { Title } from './styles'
 
 const Container = styled.div`
     text-align: center;
-    .title {
-        color: #466;
-        font-weight: 400;
-    }
     .total {
         color: gray;
         font-size: 2.5em;
-        margin: 18px;
     }
     .gender {
         text-align: left;
@@ -29,7 +25,7 @@ const Container = styled.div`
 export default function UpcomingAppointments() {
     return (
         <Container>
-            <h2 className="title">upcoming appointments</h2>
+            <Title>upcoming appointments</Title>
             <h1 className="total">13</h1>
             <div className="gender">
                 <h3>

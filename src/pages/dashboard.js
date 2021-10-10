@@ -1,5 +1,5 @@
 import AppointmentSata from '../components/AppointmentsStat'
-import Overview from '../components/Overview'
+import Overview from '../components/Overview/index'
 
 export default function Dashboard() {
     return (
