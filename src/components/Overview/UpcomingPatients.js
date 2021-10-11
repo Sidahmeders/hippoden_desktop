@@ -1,80 +1,60 @@
-import { Title } from './styles'
 import { useState } from 'react'
-import styled from 'styled-components'
-import { PatientRow } from './styles'
+import { ColumnContainerStyle, PatientRowStyle, Title } from './styles'
+import SortTab from '../Common/SortTab'
 
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-`
-
-const patients = [
-    { id: 1, name: 'Lamia Khaldouni', interest: 'A' },
-    { id: 2, name: 'Kamal Bensalah', interest: 'B' },
-    { id: 3, name: 'Ilham Nour Telghnai', interest: 'C' },
-    { id: 4, name: 'Bashir Dehmanou', interest: 'C' },
-    { id: 5, name: 'Kador Mohammed Lezerag', interest: 'B' },
-    { id: 6, name: 'Jamila Fighouli', interest: 'A' }
+let patients = [
+    { id: 1, age: 23, name: 'Lamia Khaldouni', interest: 'A', date: 12 },
+    { id: 2, age: 33, name: 'Kamal Bensalah', interest: 'B', date: 90 },
+    { id: 3, age: 54, name: 'Ilham Nour Telghnai', interest: 'C', date: 1 },
+    { id: 4, age: 30, name: 'Bashir Dehmanou', interest: 'C', date: 22 },
+    { id: 5, age: 20, name: 'Kador Mohammed Lezerag', interest: 'B', date: 68 },
+    { id: 6, age: 50, name: 'Jamila Fighouli', interest: 'A', date: 40 }
 ]
 
-function Patient({ id, name }) {
+function Patient({ name }) {
     const [caseClass, setCaseClass] = useState('case')
     const toggleItem = () => {
         caseClass === 'case' ? setCaseClass('case open') : setCaseClass('case')
     }
 
     return (
-        <PatientRow>
-            <p className="patientName" key={id}>
-                {name}
-            </p>
+        <PatientRowStyle>
+            <p className="patientName">{name}</p>
             <p className={caseClass} onClick={toggleItem}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing
             </p>
-        </PatientRow>
+        </PatientRowStyle>
     )
 }
 
-const SortPatientsStyles = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    background-color: #99999911;
-    padding: 8px 0;
-    p {
-        width: 80px;
-        padding: 5px;
-        border-radius: 4px;
-        text-align: center;
-        background: #4444;
-    }
-`
+function sortPatients(patients, sortState) {
+    const sortedPatients = patients.sort((a, b) => {
+        if (typeof a[sortState] === 'string') {
+            return a[sortState].localeCompare(b[sortState])
+        } else {
+            return a[sortState] - b[sortState]
+        }
+    })
 
-function SortPatients() {
-    return (
-        <SortPatientsStyles>
-            <p>interest</p>
-            <p>date</p>
-            <p>age</p>
-        </SortPatientsStyles>
-    )
+    return sortedPatients
 }
 
 export default function UpcomingPatients() {
+    const [sortState, setSortState] = useState('interest')
+    const [patientsLimit, setPatientsLimit] = useState(3)
+    const sortedPatients = sortPatients(patients, sortState)
+
     return (
-        <Container>
+        <ColumnContainerStyle>
             <Title>upcoming patients</Title>
-            <SortPatients />
-            {patients
-                .sort((a, b) => {
-                    return a.interest.localeCompare(b.interest)
-                })
-                .map((patient, index) => {
-                    if (index >= 3) {
-                        return null
-                    }
-                    const { id, name } = patient
-                    return <Patient id={id} name={name} />
-                })}
-        </Container>
+            <SortTab sortOptions={['interest', 'date', 'age']} setSortState={setSortState} />
+            {sortedPatients.map((patient, index) => {
+                if (index >= patientsLimit) {
+                    return null
+                }
+                const { id, name } = patient
+                return <Patient key={id} name={name} />
+            })}
+        </ColumnContainerStyle>
     )
 }

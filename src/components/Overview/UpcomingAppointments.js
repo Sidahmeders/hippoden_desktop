@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Title } from './styles'
 
-const Container = styled.div`
+const ContainerStyle = styled.div`
     text-align: center;
     .total {
         color: gray;
@@ -24,7 +24,7 @@ const Container = styled.div`
 
 export default function UpcomingAppointments() {
     return (
-        <Container>
+        <ContainerStyle>
             <Title>upcoming appointments</Title>
             <h1 className="total">13</h1>
             <div className="gender">
@@ -37,6 +37,6 @@ export default function UpcomingAppointments() {
                     <span>8</span>
                 </h3>
             </div>
-        </Container>
+        </ContainerStyle>
     )
 }

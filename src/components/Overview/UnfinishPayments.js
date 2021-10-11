@@ -1,25 +1,25 @@
-import { PatientRow, Title } from './styles'
+import { PatientRowStyle, Title } from './styles'
+
+const unfinishedPayments = [
+    { name: 'Samir Benghalai', sum: 4000 },
+    { name: 'Mourad Benkahla', sum: 2000 },
+    { name: 'Amal Bensahalh', sum: 11000 },
+    { name: 'Imane Bentaiba', sum: 1500 }
+]
 
 export default function UnfinishPayments() {
     return (
         <div>
             <Title>unfinished payments</Title>
-            <PatientRow>
-                <p className="patientName">Samir Benghalai</p>
-                <p>4000 da</p>
-            </PatientRow>
-            <PatientRow>
-                <p className="patientName">Mourad Benkahla</p>
-                <p>2000 da</p>
-            </PatientRow>
-            <PatientRow>
-                <p className="patientName">Amal Bensahalh</p>
-                <p>11000 da</p>
-            </PatientRow>
-            <PatientRow>
-                <p className="patientName">Imane Bentaiba</p>
-                <p>1500 da</p>
-            </PatientRow>
+            {unfinishedPayments.map((item) => {
+                const { name, sum } = item
+                return (
+                    <PatientRowStyle>
+                        <p className="patientName">{name}</p>
+                        <p>{sum} da</p>
+                    </PatientRowStyle>
+                )
+            })}
         </div>
     )
 }

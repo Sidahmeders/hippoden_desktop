@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 
-export const PatientRow = styled.div`
+export const ColumnContainerStyle = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const PatientRowStyle = styled.div`
     display: flex;
     .patientName {
         padding: 0 10px;
